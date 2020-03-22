@@ -15,7 +15,7 @@ SEARCH_PATTERN = 'Calling core with action:'
 DATETIME_PATTERN = '\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+'
 
 def find_post_messages(file_name, search_pattern)
-  # method get all "Calling core" messeges from the log
+  # method get all "Calling core" messages from the log
   # add return only datetime from these lines
   File.open(file_name, 'r') do |f|
     lines = f.readlines

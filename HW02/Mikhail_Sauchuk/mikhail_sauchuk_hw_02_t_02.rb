@@ -18,7 +18,7 @@ DATE_PATTERN = '\d{1,2}\/\w+\/\d{4}:\d{2}:\d{2}:\d{2} \+\d+'
 METHOD_PATTERN = '"POST \/\w+\/\d+\/\w+ HTTP\/1.1"'
 
 def find_post_messages(file_name, search_pattern)
-  # method get all POST messeges from the log
+  # method get all POST messages from the log
   File.open(file_name, 'r') do |f|
     lines = f.readlines
     return lines.select { |line| line =~ /#{search_pattern}/ }
@@ -49,7 +49,7 @@ def check_input(input)
 end
 
 def main
-  puts 'Please enter the full path to log file you would like to chekc or' \
+  puts 'Please enter the full path to log file you would like to chekc or ' \
     'press Enter to test the code'
   user_input = gets.chomp
   file_name = check_input(user_input)

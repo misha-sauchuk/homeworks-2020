@@ -30,7 +30,7 @@ def check_input(input)
 end
 
 def main
-  puts 'Please enter the full path to log file you would like to chekc or' \
+  puts 'Please enter the full path to log file you would like to chekc or ' \
     'press Enter to test the code'
   user_input = gets.chomp
   log_to_check = check_input(user_input)
