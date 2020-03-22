@@ -1,4 +1,4 @@
-# An arbitrary string is given, the method `task_4` 
+# An arbitrary string is given, the method `task_4`
 # must return the count of letters and digits in that string.
 
 def count_letters(str)
