@@ -5,6 +5,7 @@
 # for the example above, the result should be:
 # lines that do not match the format:
 # 10.6.246.103 - - [23/Apr/2018:20:30:39 +0300] "POST /test/2/messages HTTP/1.1"
+# 200 48 0.0498
 # should be ignored
 #
 # output example:
@@ -19,10 +20,8 @@ METHOD_PATTERN = '"POST \/\w+\/\d+\/\w+ HTTP\/1.1"'
 
 def find_post_messages(file_name, search_pattern)
   # method get all POST messages from the log
-  File.open(file_name, 'r') do |f|
-    lines = f.readlines
-    return lines.select { |line| line =~ /#{search_pattern}/ }
-  end
+  lines = File.readlines(file_name)
+  return lines.select { |line| line =~ /#{search_pattern}/ }
 end
 
 def get_info(arr_messages)

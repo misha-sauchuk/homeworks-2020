@@ -17,12 +17,10 @@ DATETIME_PATTERN = '\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+'
 def find_post_messages(file_name, search_pattern)
   # method get all "Calling core" messages from the log
   # add return only datetime from these lines
-  File.open(file_name, 'r') do |f|
-    lines = f.readlines
-    calling_lines = lines.select { |line| line =~ /#{search_pattern}/ }\
-                         .map { |line| line.match(DATETIME_PATTERN).to_s }
-    return calling_lines
-  end
+  lines = File.readlines(file_name)
+  calling_lines = lines.select { |line| line =~ /#{search_pattern}/ }\
+                       .map { |line| line.match(DATETIME_PATTERN).to_s }
+  return calling_lines
 end
 
 def convert_time(time)

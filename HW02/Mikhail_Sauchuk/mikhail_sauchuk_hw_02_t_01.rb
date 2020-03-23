@@ -10,11 +10,9 @@ LOG_FILE = 'bash.log'
 
 def find_error(file_name)
   # method rerturns first line with error from the input log
-  File.open(file_name, 'r') do |f|
-    lines = f.readlines
-    error_lines = lines.find_all { |line| line.downcase.include? 'error' }
-    puts "the first line with error in #{file_name} is:\n\t#{error_lines[0]}"
-  end
+  lines = File.readlines(file_name)
+  error_lines = lines.find_all { |line| line.downcase.include? 'error' }
+  puts "the first line with error in #{file_name} is:\n\t#{error_lines[0]}"
 end
 
 def check_input(input)
