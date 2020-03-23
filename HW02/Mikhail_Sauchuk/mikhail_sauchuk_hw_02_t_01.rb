@@ -8,6 +8,14 @@
 
 LOG_FILE = 'bash.log'
 
+def main
+  puts 'Please enter the full path to log file you would like to chekc or ' \
+    'press Enter to test the code'
+  user_input = gets.chomp
+  log_to_check = check_input(user_input)
+  find_error(log_to_check)
+end
+
 def find_error(file_name)
   # method rerturns first line with error from the input log
   lines = File.readlines(file_name)
@@ -25,14 +33,6 @@ def check_input(input)
     puts 'Invalid input, please try again'
     exit
   end
-end
-
-def main
-  puts 'Please enter the full path to log file you would like to chekc or ' \
-    'press Enter to test the code'
-  user_input = gets.chomp
-  log_to_check = check_input(user_input)
-  find_error(log_to_check)
 end
 
 main

@@ -14,13 +14,22 @@ LOG_FILE = 'debug.log'
 SEARCH_PATTERN = 'Calling core with action:'
 DATETIME_PATTERN = '\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+'
 
+def main
+  puts 'Please enter the full path to log file you would like to chekc or ' \
+    'press Enter to test the code'
+  user_input = gets.chomp
+  file_name = check_input(user_input)
+  locking_messages = find_post_messages(file_name, SEARCH_PATTERN)
+  calc_time(locking_messages)
+end
+
 def find_post_messages(file_name, search_pattern)
   # method get all "Calling core" messages from the log
   # add return only datetime from these lines
   lines = File.readlines(file_name)
   calling_lines = lines.select { |line| line =~ /#{search_pattern}/ }\
                        .map { |line| line.match(DATETIME_PATTERN).to_s }
-  return calling_lines
+  calling_lines
 end
 
 def convert_time(time)
@@ -47,15 +56,6 @@ def check_input(input)
     puts 'Invalid input, please try again'
     exit
   end
-end
-
-def main
-  puts 'Please enter the full path to log file you would like to chekc or ' \
-    'press Enter to test the code'
-  user_input = gets.chomp
-  file_name = check_input(user_input)
-  locking_messages = find_post_messages(file_name, SEARCH_PATTERN)
-  calc_time(locking_messages)
 end
 
 main

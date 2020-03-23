@@ -18,10 +18,20 @@ IP_PATTERN = '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}'
 DATE_PATTERN = '\d{1,2}\/\w+\/\d{4}:\d{2}:\d{2}:\d{2} \+\d+'
 METHOD_PATTERN = '"POST \/\w+\/\d+\/\w+ HTTP\/1.1"'
 
+def main
+  puts 'Please enter the full path to log file you would like to chekc or ' \
+    'press Enter to test the code'
+  user_input = gets.chomp
+  file_name = check_input(user_input)
+  search_pattern = "#{IP_PATTERN} - - \\[#{DATE_PATTERN}\\] #{METHOD_PATTERN}.*"
+  post_messages = find_post_messages(file_name, search_pattern)
+  get_info(post_messages)
+end
+
 def find_post_messages(file_name, search_pattern)
   # method get all POST messages from the log
   lines = File.readlines(file_name)
-  return lines.select { |line| line =~ /#{search_pattern}/ }
+  lines.select { |line| line =~ /#{search_pattern}/ }
 end
 
 def get_info(arr_messages)
@@ -45,16 +55,6 @@ def check_input(input)
     puts 'Invalid input, please try again'
     exit
   end
-end
-
-def main
-  puts 'Please enter the full path to log file you would like to chekc or ' \
-    'press Enter to test the code'
-  user_input = gets.chomp
-  file_name = check_input(user_input)
-  search_pattern = "#{IP_PATTERN} - - \\[#{DATE_PATTERN}\\] #{METHOD_PATTERN}.*"
-  post_messages = find_post_messages(file_name, search_pattern)
-  get_info(post_messages)
 end
 
 main
