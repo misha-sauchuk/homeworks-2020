@@ -19,8 +19,8 @@ end
 def find_error(file_name)
   # method rerturns first line with error from the input log
   lines = File.readlines(file_name)
-  error_lines = lines.find_all { |line| line.downcase.include? 'error' }
-  puts "the first line with error in #{file_name} is:\n\t#{error_lines[0]}"
+  error_line = lines.find { |line| line.downcase.include? 'error' }
+  puts "the first line with error in #{file_name} is:\n\t#{error_line}"
 end
 
 def check_input(input)
