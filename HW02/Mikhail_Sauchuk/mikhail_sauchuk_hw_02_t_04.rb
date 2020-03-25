@@ -1,17 +1,17 @@
 # An arbitrary string is given, the method `task_4`
 # must return the count of letters and digits in that string.
 
-def count_letters(str)
+def letters_count(str)
   str.scan(/[a-zA-Z]/).size
 end
 
-def count_digits(str)
+def digits_count(str)
   str.scan(/[0-9]/).size
 end
 
 def main(str)
-  letters = count_letters(str)
-  digits = count_digits(str)
+  letters = letters_count(str)
+  digits = digits_count(str)
   puts "{letters: #{letters}, digits: #{digits}}"
 end
 
