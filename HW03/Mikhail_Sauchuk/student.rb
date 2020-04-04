@@ -43,11 +43,6 @@ class Student < AbstractObserver
     end
   end
 
-  def update_backog(reject_homework)
-    homeworks.delete(reject_homework)
-    backlog << reject_homework
-  end
-
   def take_homework(homework)
     puts "Student #{surname}: I take a homework #{homework.title}"
     @backlog << homework
@@ -62,5 +57,12 @@ class Student < AbstractObserver
     puts "Student #{surname}: I have done my homework #{current_homework.title}"
     @homeworks << current_homework
     notify(current_homework)
+  end
+
+  private
+
+  def update_backog(reject_homework)
+    homeworks.delete(reject_homework)
+    backlog << reject_homework
   end
 end
