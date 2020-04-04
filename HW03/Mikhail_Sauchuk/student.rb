@@ -45,7 +45,7 @@ class Student < AbstractObserver
 
   def take_homework(homework)
     puts "Student #{surname}: I take a homework #{homework.title}"
-    @backlog << homework
+    backlog << homework
   end
 
   # carry out the homework
@@ -55,7 +55,7 @@ class Student < AbstractObserver
     current_homework = @backlog.delete_at(0)
     current_homework.status = 'done'
     puts "Student #{surname}: I have done my homework #{current_homework.title}"
-    @homeworks << current_homework
+    homeworks << current_homework
     notify(current_homework)
   end
 

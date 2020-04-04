@@ -17,7 +17,7 @@ class MentorMath < AbstractObserver
   end
 
   def detach(student)
-    @students.delete(student)
+    students.delete(student)
   end
 
   def notify
@@ -29,7 +29,7 @@ class MentorMath < AbstractObserver
   def update(student, homework)
     puts "Mentor #{surname}: I recived homework #{homework.title} from" \
            " #{student.surname}"
-    @homeworks << homework
+    homeworks << homework
   end
 
   def check_homework
