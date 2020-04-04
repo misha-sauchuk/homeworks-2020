@@ -8,7 +8,7 @@
 require_relative 'abstract_observer'
 
 class Student < AbstractObserver
-  attr_accessor :name, :surname, :homeworks
+  attr_accessor :mentors, :backlog
 
   def initialize(name, surname)
     super(name, surname)
@@ -18,20 +18,20 @@ class Student < AbstractObserver
 
   def attach(mentor)
     puts "Student #{surname}: Subscribes to mentor #{mentor.surname}"
-    @mentors << mentor
+    mentors << mentor
   end
 
   def detach(mentor)
-    @mentors.delete(mentor)
+    mentors.delete(mentor)
   end
 
   def notify(homework)
     puts "Student #{surname}: Notifying mentors"
-    @mentors.each { |mentor| mentor.update(self, homework) }
+    mentors.each { |mentor| mentor.update(self, homework) }
   end
 
   def update(checked_hm)
-    my_homeworks = checked_hm.find_all { |hm| @homeworks.include? hm }
+    my_homeworks = checked_hm.find_all { |hm| homeworks.include? hm }
     return if my_homeworks.empty?
 
     puts "Student #{surname}: I recived my homework(s) back"
@@ -39,9 +39,13 @@ class Student < AbstractObserver
       next unless hm.status == 'reject'
 
       puts "Student #{surname}: I need to fix #{hm.title}"
-      @backlog << hm
-      @homeworks.delete(hm)
+      update_backog(hm)
     end
+  end
+
+  def update_backog(reject_homework)
+    homeworks.delete(reject_homework)
+    backlog << reject_homework
   end
 
   def take_homework(homework)

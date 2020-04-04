@@ -6,16 +6,14 @@
 require_relative 'abstract_observer'
 
 class MentorMath < AbstractObserver
-  attr_accessor :name, :surname, :homeworks
-
   def initialize(name, surname)
     super(name, surname)
     @students = []
   end
 
   def attach(student)
-    puts "Mentor #{@surname}: subscribes to student #{student.surname}"
-    @students << student
+    puts "Mentor #{surname}: subscribes to student #{student.surname}"
+    students << student
   end
 
   def detach(student)
@@ -23,20 +21,20 @@ class MentorMath < AbstractObserver
   end
 
   def notify
-    puts "Mentor #{@surname}: Your homework was checked, please see status"
-    @students.each { |student| student.update(@homeworks) }
-    @homeworks = []
+    puts "Mentor #{surname}: Your homework was checked, please see status"
+    students.each { |student| student.update(homeworks) }
+    homeworks.clear
   end
 
   def update(student, homework)
-    puts "Mentor #{@surname}: I recived homework #{homework.title} from" \
+    puts "Mentor #{surname}: I recived homework #{homework.title} from" \
            " #{student.surname}"
     @homeworks << homework
   end
 
   def check_homework
     possible_results = %w[accept accept accept reject]
-    @homeworks.each { |homework| homework.status = possible_results.sample }
+    homeworks.each { |homework| homework.status = possible_results.sample }
     notify
   end
 end
