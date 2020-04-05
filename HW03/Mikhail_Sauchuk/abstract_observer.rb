@@ -1,6 +1,7 @@
 # abstract subject class
 class AbstractObserver
   attr_reader :homeworks, :students, :surname
+
   def initialize(name, surname)
     @name = name
     @surname = surname

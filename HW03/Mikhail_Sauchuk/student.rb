@@ -11,7 +11,7 @@ class Student < AbstractObserver
   attr_accessor :mentors, :backlog
 
   def initialize(name, surname)
-    super(name, surname)
+    super
     @mentors = []
     @backlog = []
   end
@@ -39,7 +39,7 @@ class Student < AbstractObserver
       next unless hm.status == 'reject'
 
       puts "Student #{surname}: I need to fix #{hm.title}"
-      update_backog(hm)
+      update_backlog(hm)
     end
   end
 
@@ -61,7 +61,7 @@ class Student < AbstractObserver
 
   private
 
-  def update_backog(reject_homework)
+  def update_backlog(reject_homework)
     homeworks.delete(reject_homework)
     backlog << reject_homework
   end

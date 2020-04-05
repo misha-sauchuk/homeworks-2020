@@ -7,7 +7,7 @@ require_relative 'abstract_observer'
 
 class MentorMath < AbstractObserver
   def initialize(name, surname)
-    super(name, surname)
+    super
     @students = []
   end
 
