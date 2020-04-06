@@ -27,10 +27,10 @@ class Student < AbstractObserver
 
   def notify(homework)
     puts "Student #{surname}: Notifying mentors"
-    mentors.each { |mentor| mentor.update(self, homework) }
+    mentors.each { |mentor| mentor.update_homework(self, homework) }
   end
 
-  def update(checked_hm)
+  def update_homework(checked_hm)
     my_homeworks = checked_hm.find_all { |hm| homeworks.include? hm }
     return if my_homeworks.empty?
 

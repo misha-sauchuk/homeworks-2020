@@ -23,7 +23,7 @@ class AbstractObserver
                                'method '#{__method__}'"
   end
 
-  def update
+  def update_homework
     raise NotImplementedError, "#{self.class} has not implemented' \
     'method '#{__method__}'"
   end
