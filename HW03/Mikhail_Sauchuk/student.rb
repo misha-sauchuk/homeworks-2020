@@ -37,7 +37,7 @@ class Student < AbstractObserver
 
     puts "Student #{surname}: I recived my homework(s) back"
     my_homeworks.each do |hm|
-      next unless hm.status == 'reject'
+      next unless hm.status == REJECT_STATUS
 
       puts "Student #{surname}: I need to fix #{hm.title}"
       update_backlog(hm)
