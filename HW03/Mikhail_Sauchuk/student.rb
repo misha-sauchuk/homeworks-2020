@@ -8,7 +8,8 @@
 require_relative 'abstract_observer'
 
 class Student < AbstractObserver
-  attr_accessor :mentors, :backlog
+  attr_reader :mentors, :backlog
+  REJECT_STATUS = 'reject'.freeze
 
   def initialize(name, surname)
     super
@@ -50,9 +51,9 @@ class Student < AbstractObserver
 
   # carry out the homework
   def do_homework
-    return if @backlog.empty?
+    return if backlog.empty?
 
-    current_homework = @backlog.delete_at(0)
+    current_homework = backlog.delete_at(0)
     current_homework.status = 'done'
     puts "Student #{surname}: I have done my homework #{current_homework.title}"
     homeworks << current_homework
