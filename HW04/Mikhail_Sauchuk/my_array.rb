@@ -24,20 +24,21 @@ class Array
   end
 
   def my_select
+    return to_enum unless block_given?
+
     select_list = []
     i = 0
     while i < size
-      select_list << self[i] if yield(self[i]) && block_given?
+      select_list << self[i] if yield(self[i])
       i += 1
     end
     select_list
   end
 end
 
-array = [1, 2, 3, 4, 5]
-
-array.my_each { |elem| puts elem }
-arr_mapped = array.my_map { |elem| elem * 2 }
-puts arr_mapped.to_s
-arr_filt = array.my_select { |elem| elem > 3 }
-puts arr_filt.to_s
+# array = [1, 2, 3, 4, 5]
+# array.my_each { |elem| puts elem }
+# arr_mapped = array.my_map { |elem| elem * 2 }
+# puts arr_mapped.to_s
+# arr_filt = array.my_select { |elem| elem > 3 }
+# puts arr_filt.to_s
