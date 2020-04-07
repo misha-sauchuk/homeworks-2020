@@ -20,7 +20,10 @@ RSpec.describe Array do
       end
     end
   end
+end
 
+RSpec.describe Array do
+  subject { described_class.new([1, 2, 3]) }
   describe '#my_map' do
     context 'if block was given' do
       it 'return updated array' do
@@ -33,7 +36,10 @@ RSpec.describe Array do
       end
     end
   end
+end
 
+RSpec.describe Array do
+  subject { described_class.new([1, 2, 3]) }
   describe '#my_select' do
     context 'if block was given' do
       it 'return filtered array' do
